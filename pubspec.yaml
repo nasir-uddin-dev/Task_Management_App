@@ -1,0 +1,40 @@
+name: task_management_app
+description: "Task management in project management refers to the process of planning, organizing, and executing tasks within a project to achieve specific goals and objectives. It involves identifying tasks, assigning responsibilities, setting deadlines, and monitoring progress to ensure that projects are completed on time and within budget. Effective task management is crucial for project success as it helps teams stay organized, prioritize work, and achieve desired outcomes efficiently.  Table of Content"
+
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.2.0
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^5.0.0
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+   - assets/images/
+
+
+
+

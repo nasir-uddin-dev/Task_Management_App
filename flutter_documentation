@@ -5,3 +5,54 @@ In Flutter, The Theme widget is used to add themes to an application. One can
 use it either for a particular part of the application like buttons and navigation
 bar or define it in the root of the application to use it throughout the entire
 app.
+
+Constructor of Theme Class
+Theme Theme({
+    key? key,
+    required ThemeData data,
+    required Widget child
+})
+Properties of Theme Widget
+    -> child: The child property takes in a widget as the object
+    to show below the Theme widget in the widget tree.
+    -> data : This property takes in ThemeData class as the object
+    to specify the styling , colors and typography to be used.
+
+Step 1: Creating a Theme
+    . TextTheme
+    . brightness
+    . primaryColor
+    . accentColor
+    . fontFamily
+
+MaterialApp(
+     title: 'My App',
+     theme: ThemeData(
+           brightness: Brightness.dark,
+           primaryColor: Colors.lightBlue[800],
+           colorScheme: ColorScheme.dark(
+           primary: Colors.lightBlue[800],
+           secondary: Colors.cyan[600],
+       ),
+       fontFamily: 'Georgia',
+       textTheme: const TextTheme(
+             headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+             headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+             bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+       ),
+     ),
+   );
+Step 2: Creating a Container
+Container(
+      color: Theme.of(context).colorScheme.secondary,
+      child: Text(
+            'Hello Geeks!',
+            style: Theme.of(context).textTheme.headline6,
+  ),
+);
+Step 3: Applying the Theme
+ThemeData(
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.red,
+    ),
+),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:task_management_app/ui/screen/signUp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,21 +20,22 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       body: Form(
         key: _formkey,
-        child: Column(
-          children: [
-            SizedBox(height: 150),
-            Text(
-              'Get Started With',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text('Login to your account', style: TextStyle(fontSize: 16)),
-            SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextFormField(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            children: [
+              SizedBox(height: 150),
+              Text(
+                'Get Started With',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Text('Login to your account', style: TextStyle(fontSize: 16)),
+              SizedBox(height: 40),
+              TextFormField(
                 controller: _controllerUsername,
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
@@ -49,13 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-            ),
-
-            SizedBox(height: 10),
-
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: TextFormField(
+              SizedBox(height: 10),
+              TextFormField(
                 controller: _controllerPassword,
                 focusNode: _focusNodePassword,
                 obscureText: _obscurePassword,
@@ -81,54 +76,65 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 60),
-            Column(
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
+              SizedBox(height: 60),
+              Column(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size.fromHeight(50),
+                      backgroundColor: Colors.deepPurpleAccent,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return SignupScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: Text('Login'),
                   ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return SignupScreen();
-                        },
-                      ),
-                    );
-                  },
-                  child: Text('Login'),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Don't have an account"),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,  //Current Page
-                      MaterialPageRoute(
-                        builder: (context) {  //building next page
-                          return SignupScreen();  //Widget
-                        },
-                      ),
-                    );
-                  },
-                  child: Text("Signup"),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account"),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context, //Current Page
+                        MaterialPageRoute(
+                          builder: (context) {
+                            //building next page
+                            return SignupScreen(); //Widget
+                          },
+                        ),
+                      );
+                    },
+                    child: Text("Signup"),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _focusNodePassword.dispose();
+    _controllerUsername.dispose();
+    _controllerPassword.dispose();
   }
 }

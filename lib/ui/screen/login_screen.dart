@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account"),
+                  Text("Don't have  account"),
                   TextButton(
                     onPressed: () {
                       Navigator.push(

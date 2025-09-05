@@ -1,0 +1,7 @@
+        ThemeData
+Themes are an integral part of UI for any application. Themes are used
+to design the fonts and colors of an application to make it more presentable.
+In Flutter, The Theme widget is used to add themes to an application. One can
+use it either for a particular part of the application like buttons and navigation
+bar or define it in the root of the application to use it throughout the entire
+app.

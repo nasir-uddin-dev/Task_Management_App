@@ -107,10 +107,10 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _onTapLoginScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => MainNavBarHolderScreen()),
-    );
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => MainNavBarHolderScreen()),
+        (predicate) => false);
   }
 
   @override

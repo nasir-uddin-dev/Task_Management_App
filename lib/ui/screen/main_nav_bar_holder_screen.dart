@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/ui/widgets/background_screen.dart';
 
 class MainNavBarHolderScreen extends StatefulWidget {
   const MainNavBarHolderScreen({super.key});
@@ -9,19 +8,33 @@ class MainNavBarHolderScreen extends StatefulWidget {
 }
 
 class _MainNavBarHolderScreenState extends State<MainNavBarHolderScreen> {
+  int _selectedIndex = 0; //private variable_name
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: CircleAvatar(
-          backgroundImage: NetworkImage(
-              "https://t4.ftcdn.net/jpg/02/14/74/61/360_F_214746128_31JkeaP6rU0NzzzdFC4khGkmqc8noe6h.jpg",),
-        ),
-      ),
-      body: BackgroundScreen(
-          child: Column(
-        children: [],
-      )),
-    );
+        appBar: AppBar(),
+        bottomNavigationBar: NavigationBar(
+            //Creates a Material 3 Navigation Bar component.
+            backgroundColor: Colors.white,
+            selectedIndex: _selectedIndex, //assign _selectedIndex
+            onDestinationSelected: (int index) {
+              //void Function(function parameter integer)
+              setState(() {
+                //rebuild UI
+                _selectedIndex = index;
+              });
+            },
+            destinations: [
+              NavigationDestination(
+                icon: Icon(Icons.new_label,),
+                label: "New Task",
+
+              ),
+              NavigationDestination(
+                  icon: Icon(Icons.refresh), label: "Progress"),
+              NavigationDestination(
+                  icon: Icon(Icons.cancel), label: "Cancelled"),
+              NavigationDestination(icon: Icon(Icons.done), label: "Completed"),
+            ]));
   }
 }

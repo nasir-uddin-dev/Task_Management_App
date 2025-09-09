@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:task_management_app/ui/screen/progress_task_screen.dart';
+
+import '../widgets/tm_app_bar.dart';
 
 class MainNavBarHolderScreen extends StatefulWidget {
   const MainNavBarHolderScreen({super.key});
@@ -9,10 +12,18 @@ class MainNavBarHolderScreen extends StatefulWidget {
 
 class _MainNavBarHolderScreenState extends State<MainNavBarHolderScreen> {
   int _selectedIndex = 0; //private variable_name
+  final List<Widget> _screens = [
+    ProgressTaskScreen(),
+    ProgressTaskScreen(),
+    ProgressTaskScreen(),
+    ProgressTaskScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: THAppBar(),
+        body: _screens[_selectedIndex],
         bottomNavigationBar: NavigationBar(
             //Creates a Material 3 Navigation Bar component.
             backgroundColor: Colors.white,
@@ -26,9 +37,10 @@ class _MainNavBarHolderScreenState extends State<MainNavBarHolderScreen> {
             },
             destinations: [
               NavigationDestination(
-                icon: Icon(Icons.new_label,),
+                icon: Icon(
+                  Icons.new_label,
+                ),
                 label: "New Task",
-
               ),
               NavigationDestination(
                   icon: Icon(Icons.refresh), label: "Progress"),
@@ -38,3 +50,5 @@ class _MainNavBarHolderScreenState extends State<MainNavBarHolderScreen> {
             ]));
   }
 }
+
+
